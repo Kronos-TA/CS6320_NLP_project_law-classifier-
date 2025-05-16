@@ -1,114 +1,87 @@
-# NLP Task: Legal Text Classification   
+#  Legal Document Classifier — NLP Project (CS6320)
 
-There are two parts of this project:
+This is my final project for the graduate-level Natural Language Processing (NLP) course (CS6320, Spring 2025). The goal is to classify legal documents into their corresponding areas of law, such as Civil, Criminal, Administrative, etc., using machine learning and natural language processing techniques.
 
-1. **[Text classification](https://github.com/FFFlora/nlp-area-of-law-classification/blob/master/Classifier.ipynb)**: The dataset contains ~1000 legal text documents and 900 of them are labeled with the corresponding area of law ( i.e., `LNIND_1993_DEL_112`  has been labeled as `Criminal Laws` ), the goal is to predict the rest of the 100 files with the correct area of laws. 
-2. **[Topic Modeling](https://github.com/FFFlora/nlp-area-of-law-classification/blob/master/topic-modeling.ipynb)**: with some specific area of law selected, the goal is to extract the topics from the documents,  therefore analysis the correlation within the same area of law.
+---
 
+##  Project Description
 
+Given a set of legal case documents, the goal is to automatically predict the **area of law** each document belongs to. This project includes:
+- Preprocessing legal texts (tokenization, lemmatization, stopword removal)
+- Feature extraction (TF-IDF, bag-of-words)
+- Classification using multiple ML models
+- Optional topic modeling using LDA
+- Visualization of results and topic distribution
 
-Still in progress to achieve higher accuracy. 
+---
 
-## Introduction
+##  Project Structure
 
-#### In this project I accomplished the following things:
+```
+project/
+├── data/                  # Legal documents (not included due to size)
+├── figure/                # Charts and visualizations
+├── Classifier.ipynb       # Main classification notebook
+├── topic-modeling.ipynb   # Optional: LDA topic modeling
+├── predictions.csv        # Sample output
+├── requirements.txt       # Python dependencies
+├── README.md              # This file
+```
 
-- Text preprocessing
-- Feature extraction and evaluation
-- Model selection, training, and result comparison 
-- Setup pipeline and hyperparameter tuning 
-- Topic modeling
-- [Data Visualization](https://kyso.io/FFFlora/nlp-area-of-law-classification/file/topic-modeling.ipynb)
+---
 
-------
+##  Models Used
 
-#### Process:
+- **Logistic Regression**
+- **Support Vector Machine (SVM)**
+- **XGBoost**
+- **Multinomial Naive Bayes**
 
-###### Load Data
+All models were trained and evaluated on a curated subset of ~100 manually labeled legal documents.
 
-###### Text Cleaning and Preprocessing
+---
 
-Tools/Libraries used: `NLTK` ,`Lexnlp`
+##  Results
 
-Used `WordNetLemmatizer ` to do lemmatization
+| Model               | Accuracy |
+|--------------------|----------|
+| Logistic Regression| 63.1%    |
+| SVM                | 57.3%    |
+| XGBoost            | 61.3%    |
+| Naive Bayes        | 32.9%    |
 
-Remove punctuations and stopwords
+---
 
-###### Feature Extraction
+##  Lessons Learned
 
-- first attempt: `TF-IDF`
+- Legal texts are domain-specific and benefit greatly from domain-specific preprocessing (e.g., removing boilerplate legal terms).
+- Logistic Regression with TF-IDF still performs competitively in small datasets.
+- Topic modeling requires a larger corpus to generate distinct, coherent topics.
 
->term frequency–inverse document frequency, is a 
->numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus.
+---
 
-- second attempt: combination of `bag of words` first then `TF-IDF`
+##  Improvements & Future Work
 
-###### Fit Models
+- Integrate a Transformer-based model (e.g., BERT or Legal-BERT)
+- Expand the dataset to improve generalization
+- Explore hierarchical classification if more granular labels are available
+- Evaluate cross-lingual models for multilingual legal corpora
 
-`Naive Bayes` worst performance: `32.9%`
+---
 
-`Logistic Regression`: 63.1% 
+##  Author
 
-- Use binary classifier to solve multivariate problems
+**Ao Tang**  
+Graduate Student, CS Department  
+University of Texas at Dallas  
+Course: CS6320 - Natural Language Processing  
+Semester: Spring 2025
 
-`SVM`: `57.3%`
+---
 
-- Decomposition first: SVD
-- Standardize the data 
-- Before Standardize, the performance for SVM was `18.2%`
+##  License & Attribution
 
-`XGBoost`: 61.3%
+This repository was originally inspired by a public open-source implementation. I recreated and extended the project for academic purposes.
 
-*All performance scores above were in terms of test set accurary.*
-
-###### Prediction
-
-###### Build Pipeline and tune Hyperparameters
-
-`GridSearchCV`
-
-I bulit the pipeline specifically for `Logistic Regression` and `XGBoost` models since they had higher accuracy in the first place.
-
-###### Topic Modeling
-
-Any document seems to be a mixture of topics, especially in legal documents. Essencially, topic modeling is a text clustering problem.
-
-Here I used `LDA`
-
-I realize that 'to guess' how many topics in a file/ area of law is difficult.
-
-###### Data Visualization
-
-I used[`mglearn* ](https://github.com/amueller/mglearn) library to display the top 10 words within each specific topic model.
-
-And  [*PyldaVis* ](https://github.com/bmabey/pyLDAvis)library was used to visualize the topic models.
-
-The last but not least I uesd [wordcloud ](https://github.com/amueller/word_cloud)to generate the entire legal document for the selected area of law to note the most recurrent terms.
-
-------
-
-## Problems:
-
-1. After some models built in the project, I realized that legal documents in the Natural Language Processing area is a very special topic that requires different techniques and tools than regular text data. I plan to do Information Extraction on these text project first and then see will that improve the accuracy. 
-2. I realize that 'to guess' how many topics in a file/ area of law is difficult.
-
-*I notice there are some powerful packages, such as [LexNLP](https://github.com/LexPredict/lexpredict-lexnlp), which deals with the NLP problems with legal documents.*
-
-## Conclusion(s)/Discussion.
-
-##### In Progress:
-
-- Information Extraction
-
-#### Appendix:
-
-##### Some Useful Links:
-
-[Complete Guide to Parameter Tuning in XGBoost (with codes in Python)](https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/)
-
-[Approaching (Almost) Any Machine Learning Problem | Abhishek Thakur](http://blog.kaggle.com/2016/07/21/approaching-almost-any-machine-learning-problem-abhishek-thakur/ )
-
-[LexNLP: Natural language processing and information extraction for legal   and regulatory texts](https://www.groundai.com/project/lexnlp-natural-language-processing-and-information-extraction-for-legal-and-regulatory-texts/)
-
-[approaching almost any machine learning problem](http://blog.kaggle.com/2016/07/21/approaching-almost-any-machine-learning-problem-abhishek-thakur/ )
-
+Original inspiration: [ffflora/nlp-area-of-law-classification](https://github.com/ffflora/nlp-area-of-law-classification)  
+All contributions in this repository were implemented and documented by me.
