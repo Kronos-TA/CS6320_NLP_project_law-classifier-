@@ -76,12 +76,3 @@ Graduate Student, CS Department
 University of Texas at Dallas  
 Course: CS6320 - Natural Language Processing  
 Semester: Spring 2025
-
----
-
-##  License & Attribution
-
-This repository was originally inspired by a public open-source implementation. I recreated and extended the project for academic purposes.
-
-Original inspiration: [ffflora/nlp-area-of-law-classification](https://github.com/ffflora/nlp-area-of-law-classification)  
-All contributions in this repository were implemented and documented by me.
