@@ -24,7 +24,6 @@ project/
 ├── Classifier.ipynb       # Main classification notebook
 ├── topic-modeling.ipynb   # Optional: LDA topic modeling
 ├── predictions.csv        # Sample output
-├── requirements.txt       # Python dependencies
 ├── README.md              # This file
 ```
 
