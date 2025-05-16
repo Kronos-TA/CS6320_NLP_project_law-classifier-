@@ -41,17 +41,6 @@ All models were trained and evaluated on a curated subset of ~100 manually label
 
 ---
 
-##  Results
-
-| Model               | Accuracy |
-|--------------------|----------|
-| Logistic Regression| 63.1%    |
-| SVM                | 57.3%    |
-| XGBoost            | 61.3%    |
-| Naive Bayes        | 32.9%    |
-
----
-
 ##  Lessons Learned
 
 - Legal texts are domain-specific and benefit greatly from domain-specific preprocessing (e.g., removing boilerplate legal terms).
